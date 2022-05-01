@@ -7,6 +7,7 @@ public without sharing class FlowCalculateStaffEntries {
     private static final String REASON_SINGLE_LARGEST_DONATION = 'Single largest donation collected';
     private static final String REASON_TOP_FUNDRAISER = 'Top staff fundraiser';
     private static final String GENERIC_DONATION_PAGE_NAME = 'Donation Page (No Fundraiser)';
+    private static final String TYPE_NON_EMPLOYEE = 'Non-employee';
 
     private static Decimal mostUniqueDonorsAmount;
     private static Decimal largestDonationAmount;
@@ -42,7 +43,7 @@ public without sharing class FlowCalculateStaffEntries {
                      ORDER BY Gross_Transaction_Amount__c DESC)
               FROM Fundraising_Page__c
              WHERE Campaign__c = :campaignId
-               AND Name != :GENERIC_DONATION_PAGE_NAME
+               AND Fundraiser_Type__c != :TYPE_NON_EMPLOYEE
               WITH SECURITY_ENFORCED
              ORDER BY Gross_Transaction_Amount__c DESC
              LIMIT 10000
