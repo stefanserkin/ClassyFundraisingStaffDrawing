@@ -43,7 +43,9 @@ public without sharing class ClassyDonationTriggerHandler {
         for (Fundraising_Page__c page : mapPagesWithDonations.values()) {
             Set<String> setDonorIds = new Set<String>();
             for (Classy_Donation__c cd : page.Classy_Donations__r) {
-                setDonorIds.add(cd.Donor_Supporter_ID__c);
+                if (cd.Donor_Supporter_ID__c != null && !String.isBlank(cd.Donor_Supporter_ID__c)) {
+                    setDonorIds.add(cd.Donor_Supporter_ID__c);
+                }
             }
             page.Number_of_Unique_Donors__c = setDonorIds.size();
         }
