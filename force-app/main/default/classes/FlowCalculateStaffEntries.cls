@@ -43,7 +43,7 @@ public without sharing class FlowCalculateStaffEntries {
                      ORDER BY Gross_Transaction_Amount__c DESC)
               FROM Fundraising_Page__c
              WHERE Campaign__c = :campaignId
-               AND Fundraiser_Type__c != :TYPE_NON_EMPLOYEE
+               AND Name != :GENERIC_DONATION_PAGE_NAME
               WITH SECURITY_ENFORCED
              ORDER BY Gross_Transaction_Amount__c DESC
              LIMIT 10000
